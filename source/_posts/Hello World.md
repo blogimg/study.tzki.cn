@@ -1,6 +1,5 @@
 ---
 title: 关于此站点
-description: 暂时还没有想好哦！
 abbrlink: 4a17b156
 icons: [fas fa-fire red, fas fa-star green]
 meta:
