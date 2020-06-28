@@ -1,0 +1,96 @@
+# 文档导航
+guide:
+  class: grid
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-map-signs
+    title: 分类导航
+  fixed: true # 固定宽度
+  rows:
+    - name: 常见问题
+      icon: fas fa-question-circle
+      url: faqs/
+    - name: 示例博客
+      icon: fas fa-play-circle
+      url: examples/
+    - name: 特别感谢
+      icon: fas fa-handshake
+      url: contributors/
+    - name: 测试博文
+      icon: fas fa-file-alt
+      url: archives/
+    - name: 主题源码
+      icon: fas fa-file-code
+      url: https://github.com/xaoxuu/hexo-theme-volantis/
+      rel: external nofollow noopener noreferrer
+      target: _blank
+    - name: 更新日志
+      icon: fas fa-tags
+      url: https://github.com/xaoxuu/hexo-theme-volantis/releases/
+      rel: external nofollow noopener noreferrer
+      target: _blank
+
+# 项目仓库
+repos:
+  class: text
+  display: [desktop] # [desktop, mobile]
+  header:
+    icon: fab fa-github
+    title: Go TO Github
+    url: https://github.com/blogimg/study.tzki.cn
+  content:
+    - "通过clone本站源码你可以做你想做的事情，也可以为此项目提交PR。"
+# qrcode widget
+# qrcode:
+#   class: qrcode
+#   display: [desktop] # [desktop, mobile]
+#   header:
+#     icon: fas fa-mobile
+#     title:
+#   height: #64px  # Automatic height if not set
+#   fancybox: #true
+#   images:
+#     # - https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png
+
+help:
+  class: page
+  display: [desktop, mobile]
+  header:
+    icon: fas fa-headset
+    title: 帮助
+  pid: faq
+  content: excerpt # excerpt, more, content
+
+news:
+  class: list
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-exclamation-triangle
+    title: 近期公告
+  rows:
+    - name: 关于主题与文档的更新
+      icon: fas fa-info-circle
+      url: https://github.com/xaoxuu/hexo-theme-volantis/issues/215
+    - name: 升级小助手
+      icon: fas fa-angle-double-up
+      url: /v2/getting-started/#升级小助手
+
+docs-v2:
+  class: group
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-list-alt
+    title: 文档 v2
+
+wiki-hexo-theme:
+  class: list
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-chevron-left
+    title: Hexo Themes
+    url: /wiki/
+  rows:
+    - name: Volantis for Hexo
+      url: /wiki/volantis/
+    - name: Resume for Hexo
+      url: /wiki/resume/

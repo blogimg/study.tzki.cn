@@ -98,21 +98,18 @@ cover:
     archive: true
     others: true # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: 小康爱学习
-  subtitle: "这是一个只记录笔记的站点"
+  title: Dreamy.TZK
+  subtitle: "今日事，今日毕"
   search: # search bar placeholder
   features:
     - name: 首页
-      icon: fas fa-play-circle
-      url: https://study.tzki.cn
+      icon: fas fa-home
+      url: /
     - name: 小康博客
       icon: fas fa-book
       url: https://www.antmoe.com/
-    - name: 小康的主页
-      icon: fas fa-home
-      url: https://xiaokang.me/
     - name: 网址收藏
-      icon: fas fa-search
+      icon: fas fa-apple-alt
       url: https://dh.xiaokang.me/
 
 # Navigation Bar
@@ -150,7 +147,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, category, date, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode]
+    sidebar: [blogger, category, tagcloud, qrcode, repos]
     # read more button
     readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
@@ -164,7 +161,7 @@ layout:
       header: [title, author, category, date, top]
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
-    sidebar: [qrcode, toc]
+    sidebar: [qrcode, toc, repos]
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
@@ -258,7 +255,7 @@ widget:
     class: blogger
     display: [desktop, mobile] # [desktop, mobile]
     avatar: https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg
-    shape: rectangle # circle, rectangle
+    shape: circle # circle, rectangle
     url: /about/
     title:
     subtitle:
