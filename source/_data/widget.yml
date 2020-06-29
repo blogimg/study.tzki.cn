@@ -39,7 +39,7 @@ repos:
     title: Go TO Github
     url: https://github.com/blogimg/study.tzki.cn
   content:
-    - "通过clone本站源码你可以做你想做的事情，也可以为此项目提交PR。"
+    - "对于此项目有补充或者更正，请点击上方链接进行更正。"
 # qrcode widget
 # qrcode:
 #   class: qrcode
