@@ -1,5 +1,5 @@
 ---
-title: 小康工具库文档
+title: xkTool工具库文档
 icons: [fas fa-fire red, fas fa-star green]
 ---
 
