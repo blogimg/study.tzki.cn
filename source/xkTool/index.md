@@ -9,7 +9,7 @@ icons: [fas fa-fire red, fas fa-star green]
 
 工具库地址：
 
-- https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/xkTool/1.0.0/xkTool.js
+- https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/xkTool/v1.0.1/xkTool.js
 
   此地址来源于GitHub仓库：https://github.com/sviptzk/StaticFile_Hexo/tree/master/xkTool，请自行检查根据仓库选择版本。
 
@@ -138,3 +138,15 @@ xiaokang.appendSocial({
 ```
 
 > 不要忘记引入阿里提供的js文件。
+
+
+
+## 更新记录
+
+- 2020-07-01-v1.0.1版本
+
+  修复不能插入svg图标的bug
+
+- 2020-06-30
+
+  第一次发布
