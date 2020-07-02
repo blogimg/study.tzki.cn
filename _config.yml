@@ -13,7 +13,7 @@ timezone: ""
 favicon: https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/img/favicon.ico
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://www.tzki.cn
+url: https://docs.tzki.cn
 root: /
 permalink: posts/:abbrlink/index.html
 permalink_defaults:

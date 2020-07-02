@@ -176,7 +176,7 @@ meta:
   author:
     avatar: https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg
     name: Dreamy.TZK
-    url: https://study.tzki.cn
+    url: https://docs.tzki.cn
   # 文章创建日期
   date:
     icon: fas fa-calendar-alt
