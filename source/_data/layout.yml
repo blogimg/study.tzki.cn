@@ -1,0 +1,26 @@
+# The following can be written in `blog/source/_data/layout.yml`
+# 文章列表（主页、自定义的列表）布局
+on_list:
+  # 列表中每一篇文章的meta信息
+  meta: [title, author, category, date, wordcount, top]
+  # 列表类页面的侧边栏
+  sidebar: [blogger, category, tagcloud, qrcode, repos]
+  # read more button
+  readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
+# 页面布局
+on_page:
+  # 文章页面主体元素，你也可以在页面的Front-matter中设置
+  body: [article, comments]
+  # 默认的meta信息，文章中没有配置则按照这里的配置来显示，设置为false则不显示
+  # 其中，title只在header中有效，music和thumbnail无需在这里设置，文章中有则显示
+  # 如果tags放置在meta.header中，那么在post列表中不显示（因为卡片下方已经有了）
+  meta:
+    header: [title, author, category, date, top]
+    footer: [updated, tags, btns, share]
+  # 文章页面的侧边栏
+  sidebar: [qrcode, repos, toc]
+# 文章布局，参数继承自 on_page
+on_post:
+  # 文章页脚，自动在每一篇文章末尾添加
+  article_footer: [references, related_repos, copyright, donate]
+# 其他的页面布局暂时等于 on_list

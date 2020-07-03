@@ -1,7 +1,6 @@
 ---
 title: xkTool工具库文档
 icons: [fas fa-fire red, fas fa-star green]
-group: [docs]
 short_title: 小康的蝴蝶魔改工具库
 ---
 
@@ -143,7 +142,43 @@ xiaokang.appendSocial({
 
 > 不要忘记引入阿里提供的 js 文件。
 
+### 欺诈标题 v1.1新增
+
+![](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@latest/2020/07/03/97fd9e12e1b9f1ef7f9697a5a7742774.png)
+
+```javascript
+xiaokang.cheatTitle([leaveTitle, backTitle, leaveIcon, backIcon])
+```
+
+|    参数    |                             描述                             |
+| :--------: | :----------------------------------------------------------: |
+| leaveTitle |     【可选】离开博客时的标题。默认为：！！这里这里 ◕ ں ◕     |
+| backTitle  | 【可选】回到博客时的标题。默认为：(ฅ>ω<*ฅ) 欢迎回来哦！爱你哟~ |
+| leaveIcon  |          【可选】离开博客时的icon。默认为小康的icon          |
+|  backIcon  |          【可选】回到博客时的icon。默认为小康的icon          |
+
+### 魔幻圆圈 v1.1新增
+
+![](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@latest/2020/07/03/32e6c8a455754fc5cbe54f2f24333e1c.png)
+
+```javascript
+xiaokang.magicCirle([radius, densety, color, clearOffset]);
+```
+
+|    参数     |                描述                |
+| :---------: | :--------------------------------: |
+|   radius    |    【可选】圆圈数量。默认为：18    |
+|   densety   |   【可选】圆圈密度。默认为：0.1    |
+|    color    | 【可选】圆圈的颜色。默认为：random |
+| clearOffset |   【可选】消失偏移。默认为：0.3    |
+
 ## 更新记录
+
+- 2020-07-03 -v1.1版本
+
+  A 欺诈标题
+
+  A 魔幻泡泡
 
 - 2020-07-01-v1.0.1 版本
 
