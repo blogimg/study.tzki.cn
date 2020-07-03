@@ -98,8 +98,8 @@ cover:
     archive: true
     others: true # can be written in front-matter 'cover: true'
   logo: # https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/256/google_logo.png
-  title: Dreamy.TZK
-  subtitle: "今日事，今日毕"
+  title: 小康的文档库
+  subtitle: "一个收藏文档与教程的地方！"
   search: # search bar placeholder
   features:
     - name: 首页
@@ -147,7 +147,7 @@ layout:
     # 列表中每一篇文章的meta信息
     meta: [title, author, category, date, wordcount, top]
     # 列表类页面的侧边栏
-    sidebar: [blogger, category, tagcloud, qrcode, docs, repos]
+    sidebar: [blogger, category, tagcloud, qrcode, repos]
     # read more button
     readmore: 阅读全文 <i class="fas fa-chevron-right"></i>
   # 页面布局
@@ -161,7 +161,7 @@ layout:
       header: [title, author, category, date, top]
       footer: [updated, tags, btns, share]
     # 文章页面的侧边栏
-    sidebar: [qrcode, repos, docs, toc]
+    sidebar: [qrcode, repos, toc]
   # 文章布局，参数继承自 on_page
   on_post:
     # 文章页脚，自动在每一篇文章末尾添加
