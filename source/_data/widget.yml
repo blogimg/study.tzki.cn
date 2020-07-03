@@ -81,7 +81,18 @@ docs-v2:
   header:
     icon: fas fa-list-alt
     title: 文档 v2
-
+docs-es6:
+  class: group
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-list-alt
+    title: ES6 入门教程
+docs:
+  class: group
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-list-alt
+    title: 文档列表
 wiki-hexo-theme:
   class: list
   display: [desktop, mobile] # [desktop, mobile]
