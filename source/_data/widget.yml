@@ -87,12 +87,7 @@ docs-es6:
   header:
     icon: fas fa-list-alt
     title: ES6 入门教程
-docs:
-  class: group
-  display: [desktop, mobile] # [desktop, mobile]
-  header:
-    icon: fas fa-list-alt
-    title: 文档列表
+
 wiki-hexo-theme:
   class: list
   display: [desktop, mobile] # [desktop, mobile]
@@ -105,3 +100,22 @@ wiki-hexo-theme:
       url: /wiki/volantis/
     - name: Resume for Hexo
       url: /wiki/resume/
+
+docs:
+  class: list
+  display: [desktop, mobile] # [desktop, mobile]
+  header:
+    icon: fas fa-chevron-left
+    title: XiaoKang's Docs
+    url: /
+  rows:
+    - name: ES6 入门教程
+      url: /es6
+    - name: xkTool
+      url: /xktool
+    - name: butterfly官方文档
+      url: https://demo.jerryc.me/
+    - name: butterfly魔改参考
+      url: /magic
+    - name: volantis官方文档
+      url: https://volantis.js.org/

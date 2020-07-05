@@ -3,11 +3,10 @@ title: ES6 入门教程
 icons: [fas fa-fire red, fas fa-star green]
 layout: page
 order: 0
-group: [docs-es6]
 short_title: 0. 前言
 meta:
   header: []
-sidebar: [docs-es6, repos, docs, toc]
+sidebar: [repos, docs, toc]
 ---
 
 # ES6 入门教程

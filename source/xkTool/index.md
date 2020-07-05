@@ -142,22 +142,22 @@ xiaokang.appendSocial({
 
 > 不要忘记引入阿里提供的 js 文件。
 
-### 欺诈标题 v1.1新增
+### 欺诈标题 v1.1 新增
 
 ![](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@latest/2020/07/03/97fd9e12e1b9f1ef7f9697a5a7742774.png)
 
 ```javascript
-xiaokang.cheatTitle([leaveTitle, backTitle, leaveIcon, backIcon])
+xiaokang.cheatTitle([leaveTitle, backTitle, leaveIcon, backIcon]);
 ```
 
-|    参数    |                             描述                             |
-| :--------: | :----------------------------------------------------------: |
-| leaveTitle |     【可选】离开博客时的标题。默认为：！！这里这里 ◕ ں ◕     |
-| backTitle  | 【可选】回到博客时的标题。默认为：(ฅ>ω<*ฅ) 欢迎回来哦！爱你哟~ |
-| leaveIcon  |          【可选】离开博客时的icon。默认为小康的icon          |
-|  backIcon  |          【可选】回到博客时的icon。默认为小康的icon          |
+|    参数    |                              描述                               |
+| :--------: | :-------------------------------------------------------------: |
+| leaveTitle |      【可选】离开博客时的标题。默认为：！！这里这里 ◕ ں ◕       |
+| backTitle  | 【可选】回到博客时的标题。默认为：(ฅ>ω<\*ฅ) 欢迎回来哦！爱你哟~ |
+| leaveIcon  |          【可选】离开博客时的 icon。默认为小康的 icon           |
+|  backIcon  |          【可选】回到博客时的 icon。默认为小康的 icon           |
 
-### 魔幻圆圈 v1.1新增
+### 魔幻圆圈 v1.1 新增
 
 ![](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@latest/2020/07/03/32e6c8a455754fc5cbe54f2f24333e1c.png)
 
@@ -174,7 +174,7 @@ xiaokang.magicCirle([radius, densety, color, clearOffset]);
 
 ## 更新记录
 
-- 2020-07-03 -v1.1版本
+- 2020-07-03 -v1.1 版本
 
   A 欺诈标题
 
