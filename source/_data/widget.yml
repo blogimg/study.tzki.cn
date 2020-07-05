@@ -105,13 +105,13 @@ docs:
   class: list
   display: [desktop, mobile] # [desktop, mobile]
   header:
-    icon: fas fa-chevron-left
+    icon: fas fa-home
     title: XiaoKang's Docs
     url: /
   rows:
     - name: ES6 入门教程
       url: /es6
-    - name: xkTool
+    - name: xkTool-魔改工具库
       url: /xktool
     - name: butterfly官方文档
       url: https://demo.jerryc.me/
