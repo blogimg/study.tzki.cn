@@ -18,6 +18,22 @@ short_title: 小康的蝴蝶魔改工具库
 
   可以自行下载此工具库放到本地引用也可以
 
+## 关于版本
+
+自2020-07-06日起，版本命名才用`v`+`主题大版本号.`+`工具库大版本号.`+`工具库小版本号`
+
+- 主题大版本号
+
+  也就是主题版本号的第一位
+
+- 工具库大版本号
+
+  也就是工具库有较大更新时，或者小版本号过多时
+
+- 工具库小版本号
+
+  修复bug或者小功能，小更新
+
 ## 关于引入顺序
 
 xkTool 是基于 jQuery 写的，因此引入时必须保证 jQuery 已经引入了。对于最新版本的 butterfly 主题，只需要在`inject>bottom`处引入即可。
@@ -31,10 +47,10 @@ xkTool 是基于 jQuery 写的，因此引入时必须保证 jQuery 已经引入
 这一步是下边所有修改的基础，所有修改均由此处创建的对象进行调用方法。
 
 ```javascript
-var xiaokang = new xkTool(param);
+var xiaokang = new xkTool(param1,param2);
 ```
 
-其中参数`param`的取值：
+其中参数`param1`的取值：
 
 - 留空
 
@@ -62,6 +78,16 @@ var xiaokang = new xkTool(param);
   var xiaokang = new xkTool("transparent");
   ```
 
+参数`param2`的取值：
+
+- false
+
+  默认值，表示不适用滤镜
+
+- true
+
+  使用滤镜
+
 **以下示例中`xiaokang`均代表此步实例化的对象。**
 
 ## 视觉修改
@@ -75,6 +101,46 @@ xiaokang.changeBanner(param);
 ```
 
 > 传入参数与创建对象时一致。
+
+### 随机banner图
+
+1. 使用随机数方式
+
+这种方式需要设置前部分网址和后部分网址以及随机数的范围。
+
+```javascript
+xiaokang.randomBanner(
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/", // 前半部分网址
+    "-min.jpg", // 后半部分网址
+    0, // 随机数开始范围
+    2, // 随机数结束范围
+    true // 是否开启滤镜 默认不开启
+);
+```
+
+以上代码会设置的网址分别是：
+
+- `https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/0-min.jpg`
+- `https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/1-min.jpg`
+- `https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/2-min.jpg`
+
+2. 自定义图片地址
+
+这种方式适合没有规律的图片。
+
+```javascript
+// 添加图片，背景图片会在这里随机选取一个设置为banner
+xiaokang.bannerList = [
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/25-min.jpg",
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/23-min.jpg",
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/24-min.jpg",
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/2-min.jpg",
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/27-min.jpg",
+];
+xiaokang.randomBanner(true); // true为使用滤镜，不写或者false为不使用滤镜
+```
+
+
 
 ### 手机状态下工具栏默认不展开
 
@@ -104,6 +170,8 @@ xiaokang.bgPage();
 
 ### 随机背景
 
+1. 使用无规律的图片
+
 ```javascript
 xiaokang.imgList = ["这里写入你的地址，多个地址用逗号分隔"];
 xiaokang.randomBg(); // 调用随机背景的方法
@@ -124,6 +192,24 @@ xiaokang.randomBg();
 ```
 
 如果没有设置`imgList`属性而直接调用`randomBg`方法，则会将背景设置为预设背景。
+
+2. 使用有规律的图片（随机数字）
+
+```javascript
+xiaokang.randomBg(
+    "https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/", // 前半部分网址
+    "-min.jpg", // 后半部分网址
+    0, // 随机数开始范围
+    2, // 随机数结束范围
+    true // 是否开启滤镜 默认不开启
+);
+```
+
+以上代码会设置的网址分别是：
+
+- `https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/0-min.jpg`
+- `https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/1-min.jpg`
+- `https://cdn.jsdelivr.net/gh/yunwanjia-cloud/banner/2-min.jpg`
 
 ## 插入元素
 
@@ -173,6 +259,12 @@ xiaokang.magicCirle([radius, densety, color, clearOffset]);
 | clearOffset |   【可选】消失偏移。默认为：0.3    |
 
 ## 更新记录
+
+- 2020-07-06 -v3.0.0版本
+
+  A 随机banner图
+
+  A 随机背景
 
 - 2020-07-03 -v1.1 版本
 
