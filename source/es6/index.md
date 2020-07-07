@@ -6,7 +6,7 @@ order: 0
 short_title: 0. 前言
 meta:
   header: []
-sidebar: [repos, docs, toc]
+sidebar: [docs-es6, repos, docs, toc]
 ---
 
 # ES6 入门教程
