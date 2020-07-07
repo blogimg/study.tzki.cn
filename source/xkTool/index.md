@@ -14,6 +14,14 @@ short_title: 小康的蝴蝶魔改工具库
 
   此地址来源于 GitHub 仓库：https://github.com/sviptzk/StaticFile_Hexo/tree/master/xkTool，请自行检查根据仓库选择版本。
 
+- 最新版
+
+  - master分支下的`https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/butterfly/js/xkTool.js`
+  
+  - 最后一个发布版的最新版
+  
+    `https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/js/xkTool.js`
+  
 - 其他地址
 
   可以自行下载此工具库放到本地引用也可以
@@ -258,7 +266,52 @@ xiaokang.magicCirle([radius, densety, color, clearOffset]);
 |    color    | 【可选】圆圈的颜色。默认为：random |
 | clearOffset |   【可选】消失偏移。默认为：0.3    |
 
+### 全局左下角APlayer
+
+```javascript
+xiaokang.aplayer({
+    audio: [
+        {
+            name: "SB",
+            artist: "SB",
+            url: "http://music.163.com/song/media/outer/url?id=574566207.mp3",
+            cover: "SB",
+        },
+    ],
+    fixed: true,
+    mini: true,
+});
+```
+
+参数直接传入APlayer的参数即可。全部参数参照官方[参数列表](https://aplayer.js.org/#/zh-Hans/?id=%E5%8F%82%E6%95%B0) 即可。
+
+### 全局左下角Meting
+
+```javascript
+xiaokang.meting("2802022828", "netease", "playlist");
+```
+
+三个参数分别表示
+
+- ID
+
+  可选为song id / playlist id / album id / search keyword
+
+- server
+
+  music platform: `netease`, `tencent`, `kugou`, `xiami`, `baidu`
+
+- type
+
+  `song`, `playlist`, `album`, `search`, `artist`
+
 ## 更新记录
+
+- 2020-07-07 v3.1.0版本
+
+  A 全局左下角APlayer
+
+  A 全局左下角Meting
 
 - 2020-07-06 -v3.0.0版本
 
