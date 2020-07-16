@@ -209,7 +209,6 @@ xiaokang.randomBg(
     "-min.jpg", // 后半部分网址
     0, // 随机数开始范围
     2, // 随机数结束范围
-    true // 是否开启滤镜 默认不开启
 );
 ```
 
@@ -265,6 +264,14 @@ xiaokang.magicCirle([radius, densety, color, clearOffset]);
 |   densety   |   【可选】圆圈密度。默认为：0.1    |
 |    color    | 【可选】圆圈的颜色。默认为：random |
 | clearOffset |   【可选】消失偏移。默认为：0.3    |
+
+### 页脚养鱼 v3.0.1
+
+![](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@latest/2020/07/16/e404eec93501f2a292fe7f8f74e1be1b.png)
+
+```javascript
+xiaokang.footFish();
+```
 
 ### 全局左下角APlayer
 
