@@ -10,21 +10,21 @@ short_title: 小康的蝴蝶魔改工具库
 
 工具库地址：
 
-- https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/xkTool/v1.0.1/xkTool.js
+- 使用unpkg链接
 
-  此地址来源于 GitHub 仓库：https://github.com/sviptzk/StaticFile_Hexo/tree/master/xkTool，请自行检查根据仓库选择版本。
+  https://unpkg.com/xiaokang-style/butterfly/js/xkTool.js
 
-- 最新版
+  时刻保持最新版本，但速度稍微慢一点。
 
-  - master分支下的`https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/butterfly/js/xkTool.js`
+- 使用jsdelive的链接
+
+- 【https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@master/xkTool/文件夹名/xkTool.js】
+
+  需要自己寻找最新版本，手动更新版本
+
+  > 此地址来源于 GitHub 仓库：[https://github.com/sviptzk/StaticFile_Hexo/tree/master/xkTool](https://github.com/sviptzk/StaticFile_Hexo/tree/master/xkTool)，请自行查找最新的文件夹，请自行检查根据仓库选择版本。
+
   
-  - 最后一个发布版的最新版
-  
-    `https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@latest/butterfly/js/xkTool.js`
-  
-- 其他地址
-
-  可以自行下载此工具库放到本地引用也可以
 
 ## 关于版本
 
