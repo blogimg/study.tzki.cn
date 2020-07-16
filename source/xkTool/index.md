@@ -265,7 +265,7 @@ xiaokang.magicCirle([radius, densety, color, clearOffset]);
 |    color    | 【可选】圆圈的颜色。默认为：random |
 | clearOffset |   【可选】消失偏移。默认为：0.3    |
 
-### 页脚养鱼 v3.0.1
+### 页脚养鱼 v3.1.1
 
 ![](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@latest/2020/07/16/e404eec93501f2a292fe7f8f74e1be1b.png)
 
