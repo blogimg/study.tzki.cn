@@ -12,6 +12,8 @@ short_title: 小康的Speak使用
 {% cell 小康博客, https://www.antmoe.com/speak/, https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg %}
 {% endbtns %}
 
+更新日志：[更新日志](https://share.mubu.com/doc/lkqYlE4TZF)
+
 ## 前言
 
 1. 在使用之前请先了解[小康](https://xiaokang.me/)为什么开发此项目
