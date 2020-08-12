@@ -6,6 +6,12 @@ short_title: 小康的Speak使用
 
 ![image-20200811184635204](https://cdn.jsdelivr.net/gh/blogimg/HexoStaticFile2@0bdc30cf733b8af36a4a42a248878eb75de8795a/2020/08/11/4e58737222b4bf0ecbb4e9040fd039ed.png)
 
+示例：
+
+{% btns circle grid5 %}
+{% cell 小康博客, https://www.antmoe.com/speak/, https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg %}
+{% endbtns %}
+
 ## 前言
 
 1. 在使用之前请先了解[小康](https://xiaokang.me/)为什么开发此项目
@@ -504,14 +510,12 @@ short_title: 小康的Speak使用
 
 5. Speak容器
 
-   这个获取到issue后加入到的容器。类名包括`is-container`即可。容器内可放入任何元素，例如一张图片。它的作用是当获取不到issue时，或显示容器内的元素，获取到则替换掉容器内的元素
+   这个获取到issue后加入到的容器。类名包括`is-container`即可。容器内可放入任何元素，例如一张图片。
 
    ```html
-   <div class="is-container">
-       <img src='https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@v3.3.9/butterfly/img/loading.gif' />
-   </div>
+   <div class="is-container"></div>
    ```
-
+   
 6. Speak对象
 
    ```javascript
@@ -567,14 +571,12 @@ short_title: 小康的Speak使用
    在上面引入的后边创建我们的Speak容器及上一页下一页按钮页码标签。
 
    ```html
-   <div class="is-container">
-       <img src='https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@v3.3.9/butterfly/img/loading.gif' />
-   </div>
+   <div class="is-container"></div>
    <a class="btn-beautify button--animated  left larger prev red" href="#" title="上一页" style='display:none;'><i class="far fa-hand-point-left fa-fw "></i> 上一页 </a>
    <a class="btn-beautify button--animated larger next red" href="#" title="下一页" style="float: right;display: none;"><i class="far fa-hand-point-right fa-fw "></i> 下一页 </a>
    <span class="inline-tag grey page" style="position: absolute;transform: translateX(-50%);left: 50%;">Loading...</span>
    ```
-
+   
 3. 引入工具库并创建对象
 
    ```html
@@ -659,7 +661,7 @@ short_title: 小康的Speak使用
    
    
    
-   <div class="is-container"><img src='https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@v3.3.9/butterfly/img/loading.gif' /></div><a class="btn-beautify button--animated  left larger prev red" href="#" title="上一页" style='display:none;'><i class="far fa-hand-point-left fa-fw "></i> 上一页 </a><a class="btn-beautify button--animated larger next red" href="#" title="下一页" style="float: right;display: none;"><i class="far fa-hand-point-right fa-fw "></i> 下一页 </a>
+   <div class="is-container"></div><a class="btn-beautify button--animated  left larger prev red" href="#" title="上一页" style='display:none;'><i class="far fa-hand-point-left fa-fw "></i> 上一页 </a><a class="btn-beautify button--animated larger next red" href="#" title="下一页" style="float: right;display: none;"><i class="far fa-hand-point-right fa-fw "></i> 下一页 </a>
    
    <span class="inline-tag grey page" style="position: absolute;transform: translateX(-50%);left: 50%;">Loading...</span>
    
