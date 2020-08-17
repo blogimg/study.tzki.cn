@@ -50,6 +50,8 @@ short_title: 小康的Speak使用
 
    以下提供一个默认css，你可以对其修改也可以直接使用。
 
+   代码高亮使用highlight的样式，样式可以参考[highlight官方](https://highlightjs.org/static/demo/)，找到自己喜欢的配色，自行引入即可。
+
    {% folding green, 示例CSS %}
 
    在线地址：[https://unpkg.com/ispeak/Speak.css](https://unpkg.com/ispeak/Speak.css)
@@ -534,8 +536,6 @@ short_title: 小康的Speak使用
        defaultLabelName: "Default",
        // 没有标签时的背景颜色
        defaultLabelColor: "#ffc107",
-       // highlight代码高亮的主题   
-       highlightcss:"/styles/monokai-sublime.min.css",
        // 为标签加入前缀修饰符
        emojiLabel: {
            // 标签名:修饰符
@@ -547,9 +547,9 @@ short_title: 小康的Speak使用
            随便说说:"🎈",
            测试:'👻',
        }
-}); 
+   }); 
    ```
-   
+
    
 
 ## 创建Speak页面
@@ -600,8 +600,6 @@ short_title: 小康的Speak使用
            defaultLabelName: "Default",
            // 没有标签时的背景颜色
            defaultLabelColor: "#ffc107",
-           // highlight代码高亮的主题   
-           highlightcss:"/styles/monokai-sublime.min.css",
            // 为标签加入前缀修饰符
            emojiLabel: {
                // 标签名:修饰符
@@ -616,7 +614,7 @@ short_title: 小康的Speak使用
        }); 
    </script>
    ```
-
+   
 4. 完成
 
    接下来便可以显示你仓库里的issue了。
@@ -679,7 +677,6 @@ short_title: 小康的Speak使用
            reop: "speak",
            defaultLabelName: "Default",
            defaultLabelColor: "#ffc107",
-           highlightcss:"https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.1/styles/monokai-sublime.min.css",
            emojiLabel: {
                Coder: "🎯",
                日常:"💬",
@@ -694,9 +691,9 @@ short_title: 小康的Speak使用
    
    
    ```
-
-   如果你对我上文中描述不清楚，可以参考我的页面在琢磨琢磨！
-
+   
+如果你对我上文中描述不清楚，可以参考我的页面在琢磨琢磨！
+   
 3. 其他问题
 
    请仔细看本文档。
@@ -706,4 +703,3 @@ short_title: 小康的Speak使用
 ## 最后
 
 1. 此项目初衷：通过gitee发布issue，博客内获取作为说说展示。因此不会考虑在博客内容加入登陆等功能。如果一个完整的说说功能，请使用[artitalk](https://artitalk.js.org/)
-
