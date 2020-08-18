@@ -198,11 +198,8 @@ short_title: 基于Gitee的友链创建
 2. 引入Friend对象
 
    ```html
-   
+   <script src='https://unpkg.com/ifriend/index.js'></script>
    ```
-<script src='https://unpkg.com/ifriend/index.js'></script>
-   ```
-   
 3. 创建容器并初始化对象
 
    ```html
@@ -227,9 +224,13 @@ short_title: 基于Gitee的友链创建
    </script>
    ```
 
+
+
 4. 完成
 
    接下来便可以显示你的码云小伙伴了
+
+
 
 ## 码云issue格式
 
@@ -269,10 +270,9 @@ animation: borderFlash 0s infinite alternate
 # 头像动画 参考 https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation
 # 内置动画：auto_rotate_left（左旋转）、auto_rotate_right（右旋转）
 img_animation: auto_rotate_right 0s linear infinite
-​```
+```
 
 **其他问题参考[Friend](https://docs.tzki.cn/Friend)**
-```
 
 ## 常见问题
 
@@ -288,7 +288,7 @@ img_animation: auto_rotate_right 0s linear infinite
 
 2. 小康的Friend页示例
 
-   ```markdown
+   ```MD
    ---
    title: 友情链接
    date: 2020-02-02 10:00:00
@@ -298,7 +298,7 @@ img_animation: auto_rotate_right 0s linear infinite
    
    ---
    
-   <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src='https://cdn.jsdelivr.net/gh/sviptzk/StaticFile_HEXO@0f0db55/butterfly/js/Friend.js'></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src='https://unpkg.com/ifriend/index.js'></script>
    
    <script>
        $('.flink').prepend('<div id="friend1"></div>')
@@ -317,116 +317,6 @@ img_animation: auto_rotate_right 0s linear infinite
            },
        });
    </script>
-   
-   
-   
-   
-   
-   
-   
-   
-   ## 申请友链格式
-   
-   {% tabs tab-id %}
-   
-   <!-- tab 申请友链 -->
-   
-   1. 进入[friend](https://gitee.com/antmoe/friend)仓库，并且登陆账号
-   2. 阅读README文件
-   3. 点击Issue，按照要求进行新建Issue
-   4. 等待管理员审核
-   
-   > 1. 关于修改信息
-   >
-   >    如果你已经审核通过，但是需要更改当时的信息，那么你可以再次进入此仓库搜索你的域名即可再次编辑当时发表的Issue，这样就可以修改你的信息了！
-   >
-   >    如果你是在2020年8月15日之前申请的友链需要修改信息需要重新到gitee进行新建issue，等待管理员审核通过后即可修改完成。
-   >
-   > 2. 关于清理友链
-   >
-   >    我会不定期访问你的友链，如果出现网站无法访问、404、友链入口难以发现、删除本站友链等情况我会直接将你的网站在此站上移除，如需再次添加友链，请重新申请。
-   
-   <!-- endtab -->
-   
-   
-   
-   <!-- tab 友联须知 -->
-   
-   <div class="checkbox cyan checked"><input type="checkbox" checked><p>大佬可不受以下要求限制</p></div>
-   <div class="checkbox green checked"><input type="checkbox" checked><p>小站是 🍤学习 or 🍥博客站</p></div>
-   
-   <div class="checkbox green checked"><input type="checkbox" checked><p>至少一篇原创，没有原创的内容📔📕📗📘📙📓的话很快就会死掉的呢  </p></div>
-   
-   <div class="checkbox minus yellow checked"><input type="checkbox" checked><p>申请友联请务必能在你的友联处看到本站链接。</p></div>
-   
-   <div class="checkbox minus yellow checked"><input type="checkbox" checked><p>网站要有维护，定期或不定期均可</p></div>
-   
-   <div class="checkbox minus yellow checked"><input type="checkbox" checked><p>如果内容含有广告会酌情处理。</p></div>
-   
-   <div class="checkbox times red checked"><input type="checkbox" checked><p>含有违反中国法律内容的一律不通过。</p></div>
-   
-   <div class="checkbox times red checked"><input type="checkbox" checked><p>网站被QQ、微信标红(不包含非官方提示)的一律不通过。</p></div>
-   
-   <div class="checkbox times red checked"><input type="checkbox" checked><p>3个月以上没有新文章、网站打不开、取消本站链接本站将直接移除你的链接。</p></div>
-   
-   <div class="checkbox times red checked"><input type="checkbox" checked><p>新站请过段时间再来申请。</p></div>
-   
-   <!-- endtab -->
-   
-   <!-- tab 清理记录 -->
-   
-   {% timeline 友链清理记录 %}
-   
-   如果出现误清理请到<a href='https://gitee.com/antmoe/friend' target="_blank">friend</a>重新申请即可。
-   
-   {% timenode 2020年8月15日 %}
-   
-   - Royce--www.roy\*\*\*\*03.top
-   
-     取消本站友链
-   
-   - 雾时之森--m1**4\.cn
-   
-     网站打不开
-   
-   - 鬼鬼的博客--ssy\*\*\*\*\*ove\.me
-   
-     域名加速到期
-   
-   - Andu博客站--www.xo\*\*\*un\.cn
-   
-     网站404
-   
-   - Learm--blog.le\*\*m.top
-   
-     取消本站链接
-   
-   - TanHua’s Blog--tu\*\*\*\*\*an\.top
-   
-     疑似改版
-   
-   - SvnYang-\-www\.sv\*\*\*ng\.cn
-   
-     找不到友链入口
-   
-   以上用户如果出现误清理请到[friend](https://gitee.com/antmoe/friend)重新申请即可。
-   
-   {% endtimenode %}
-   
-   
-   
-   {% endtimeline %}
-   
-   <!-- endtab -->
-   
-   {% endtabs %}
-   
-   <div class="note danger icon">
-       <p>注意：添加友链请到<a href='https://gitee.com/antmoe/friend' target="_blank">friend</a>参照README文件进行添加。在此留言进行申请友链直接忽略！！！</p>
-   </div>
-   
-   
-   
    
    ## 我的信息
    
