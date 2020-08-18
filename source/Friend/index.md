@@ -288,6 +288,8 @@ img_animation: auto_rotate_right 0s linear infinite
 
 2. 小康的Friend页示例
 
+   如果你对我上文中描述不清楚，可以参考我的页面在琢磨琢磨！
+   
    ```MD
    ---
    title: 友情链接
@@ -329,15 +331,7 @@ img_animation: auto_rotate_right 0s linear infinite
    width: 1px (代表边框的大小border-width)
    color: "#881B12" 
    ​```
-   
-   
    ```
    
-
-如果你对我上文中描述不清楚，可以参考我的页面在琢磨琢磨！
-
-3. 其他问题
-
-   请仔细看本文档。
 
 
