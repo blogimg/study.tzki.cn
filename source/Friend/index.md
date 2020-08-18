@@ -270,6 +270,9 @@ animation: borderFlash 0s infinite alternate
 # 头像动画 参考 https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation
 # 内置动画：auto_rotate_left（左旋转）、auto_rotate_right（右旋转）
 img_animation: auto_rotate_right 0s linear infinite
+
+​```
+
 ```
 
 **其他问题参考[Friend](https://docs.tzki.cn/Friend)**
@@ -289,7 +292,7 @@ img_animation: auto_rotate_right 0s linear infinite
 2. 小康的Friend页示例
 
    如果你对我上文中描述不清楚，可以参考我的页面在琢磨琢磨！
-   
+
    ```MD
    ---
    title: 友情链接
@@ -320,18 +323,17 @@ img_animation: auto_rotate_right 0s linear infinite
        });
    </script>
    
-   ## 我的信息
    
-   ​```yaml
-   name: 小康博客
-   link: https://www.antmoe.com/
-   avatar: https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg
-   descr: 一个收藏回忆与分享技术的地方！
-   #以下内容如果存在的情况下
-   width: 1px (代表边框的大小border-width)
-   color: "#881B12" 
+    ## 我的信息
+   
+    ```yaml
+    name: 小康博客
+    link: https://www.antmoe.com/
+    avatar: https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg
+    descr: 一个收藏回忆与分享技术的地方！
+    #以下内容如果存在的情况下
+    width: 1px (代表边框的大小border-width)
+    color: "#881B12" 
    ​```
    ```
-   
-
 
