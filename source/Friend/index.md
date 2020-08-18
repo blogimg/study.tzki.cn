@@ -12,6 +12,8 @@ short_title: 基于Gitee的友链创建
 {% cell 小康博客, https://www.antmoe.com/friends/, https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg %}
 {% endbtns %}
 
+更新日志：暂无
+
 ## 前言
 
 1. 此项目目的为了解决每次添加友链而频繁`deploy`博客的问题
@@ -196,6 +198,8 @@ short_title: 基于Gitee的友链创建
 2. 引入Friend对象
 
    ```html
+   
+   ```
 <script src='https://unpkg.com/ifriend/index.js'></script>
    ```
    
@@ -222,7 +226,7 @@ short_title: 基于Gitee的友链创建
        });
    </script>
    ```
-   
+
 4. 完成
 
    接下来便可以显示你的码云小伙伴了
