@@ -20,11 +20,11 @@ async 函数是什么？一句话，它就是 Generator 函数的语法糖。
 前文有一个 Generator 函数，依次读取两个文件。
 
 ```javascript
-const fs = require("fs");
+const fs = require('fs');
 
 const readFile = function (fileName) {
   return new Promise(function (resolve, reject) {
-    fs.readFile(fileName, function (error, data) {
+    fs.readFile(fileName, function(error, data) {
       if (error) return reject(error);
       resolve(data);
     });
@@ -32,8 +32,8 @@ const readFile = function (fileName) {
 };
 
 const gen = function* () {
-  const f1 = yield readFile("/etc/fstab");
-  const f2 = yield readFile("/etc/shells");
+  const f1 = yield readFile('/etc/fstab');
+  const f2 = yield readFile('/etc/shells');
   console.log(f1.toString());
   console.log(f2.toString());
 };
@@ -43,8 +43,8 @@ const gen = function* () {
 
 ```javascript
 const asyncReadFile = async function () {
-  const f1 = await readFile("/etc/fstab");
-  const f2 = await readFile("/etc/shells");
+  const f1 = await readFile('/etc/fstab');
+  const f2 = await readFile('/etc/shells');
   console.log(f1.toString());
   console.log(f2.toString());
 };
@@ -91,7 +91,7 @@ async function getStockPriceByName(name) {
   return stockPrice;
 }
 
-getStockPriceByName("goog").then(function (result) {
+getStockPriceByName('goog').then(function (result) {
   console.log(result);
 });
 ```
@@ -112,7 +112,7 @@ async function asyncPrint(value, ms) {
   console.log(value);
 }
 
-asyncPrint("hello world", 50);
+asyncPrint('hello world', 50);
 ```
 
 上面代码指定 50 毫秒以后，输出`hello world`。
@@ -131,7 +131,7 @@ async function asyncPrint(value, ms) {
   console.log(value);
 }
 
-asyncPrint("hello world", 50);
+asyncPrint('hello world', 50);
 ```
 
 async 函数有多种使用形式。
@@ -178,10 +178,10 @@ const foo = async () => {};
 
 ```javascript
 async function f() {
-  return "hello world";
+  return 'hello world';
 }
 
-f().then((v) => console.log(v));
+f().then(v => console.log(v))
 // "hello world"
 ```
 
@@ -191,13 +191,13 @@ f().then((v) => console.log(v));
 
 ```javascript
 async function f() {
-  throw new Error("出错了");
+  throw new Error('出错了');
 }
 
 f().then(
-  (v) => console.log(v),
-  (e) => console.log(e)
-);
+  v => console.log(v),
+  e => console.log(e)
+)
 // Error: 出错了
 ```
 
@@ -213,7 +213,7 @@ async function getTitle(url) {
   let html = await response.text();
   return html.match(/<title>([\s\S]+)<\/title>/i)[1];
 }
-getTitle("https://tc39.github.io/ecma262/").then(console.log);
+getTitle('https://tc39.github.io/ecma262/').then(console.log)
 // "ECMAScript 2017 Language Specification"
 ```
 
@@ -230,7 +230,7 @@ async function f() {
   return await 123;
 }
 
-f().then((v) => console.log(v));
+f().then(v => console.log(v))
 // 123
 ```
 
@@ -245,7 +245,10 @@ class Sleep {
   }
   then(resolve, reject) {
     const startTime = Date.now();
-    setTimeout(() => resolve(Date.now() - startTime), this.timeout);
+    setTimeout(
+      () => resolve(Date.now() - startTime),
+      this.timeout
+    );
   }
 }
 
@@ -262,14 +265,14 @@ class Sleep {
 
 ```javascript
 function sleep(interval) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(resolve, interval);
-  });
+  })
 }
 
 // 用法
 async function one2FiveInAsync() {
-  for (let i = 1; i <= 5; i++) {
+  for(let i = 1; i <= 5; i++) {
     console.log(i);
     await sleep(1000);
   }
@@ -282,12 +285,12 @@ one2FiveInAsync();
 
 ```javascript
 async function f() {
-  await Promise.reject("出错了");
+  await Promise.reject('出错了');
 }
 
 f()
-  .then((v) => console.log(v))
-  .catch((e) => console.log(e));
+.then(v => console.log(v))
+.catch(e => console.log(e))
 // 出错了
 ```
 
@@ -297,8 +300,8 @@ f()
 
 ```javascript
 async function f() {
-  await Promise.reject("出错了");
-  await Promise.resolve("hello world"); // 不会执行
+  await Promise.reject('出错了');
+  await Promise.resolve('hello world'); // 不会执行
 }
 ```
 
@@ -309,12 +312,14 @@ async function f() {
 ```javascript
 async function f() {
   try {
-    await Promise.reject("出错了");
-  } catch (e) {}
-  return await Promise.resolve("hello world");
+    await Promise.reject('出错了');
+  } catch(e) {
+  }
+  return await Promise.resolve('hello world');
 }
 
-f().then((v) => console.log(v));
+f()
+.then(v => console.log(v))
 // hello world
 ```
 
@@ -322,11 +327,13 @@ f().then((v) => console.log(v));
 
 ```javascript
 async function f() {
-  await Promise.reject("出错了").catch((e) => console.log(e));
-  return await Promise.resolve("hello world");
+  await Promise.reject('出错了')
+    .catch(e => console.log(e));
+  return await Promise.resolve('hello world');
 }
 
-f().then((v) => console.log(v));
+f()
+.then(v => console.log(v))
 // 出错了
 // hello world
 ```
@@ -338,13 +345,13 @@ f().then((v) => console.log(v));
 ```javascript
 async function f() {
   await new Promise(function (resolve, reject) {
-    throw new Error("出错了");
+    throw new Error('出错了');
   });
 }
 
 f()
-  .then((v) => console.log(v))
-  .catch((e) => console.log(e));
+.then(v => console.log(v))
+.catch(e => console.log(e))
 // Error：出错了
 ```
 
@@ -356,10 +363,11 @@ f()
 async function f() {
   try {
     await new Promise(function (resolve, reject) {
-      throw new Error("出错了");
+      throw new Error('出错了');
     });
-  } catch (e) {}
-  return await "hello world";
+  } catch(e) {
+  }
+  return await('hello world');
 }
 ```
 
@@ -372,8 +380,9 @@ async function main() {
     const val2 = await secondStep(val1);
     const val3 = await thirdStep(val1, val2);
 
-    console.log("Final: ", val3);
-  } catch (err) {
+    console.log('Final: ', val3);
+  }
+  catch (err) {
     console.error(err);
   }
 }
@@ -382,16 +391,16 @@ async function main() {
 下面的例子使用`try...catch`结构，实现多次重复尝试。
 
 ```javascript
-const superagent = require("superagent");
+const superagent = require('superagent');
 const NUM_RETRIES = 3;
 
 async function test() {
   let i;
   for (i = 0; i < NUM_RETRIES; ++i) {
     try {
-      await superagent.get("http://google.com/this-throws-an-error");
+      await superagent.get('http://google.com/this-throws-an-error');
       break;
-    } catch (err) {}
+    } catch(err) {}
   }
   console.log(i); // 3
 }
@@ -417,7 +426,8 @@ async function myFunction() {
 // 另一种写法
 
 async function myFunction() {
-  await somethingThatReturnsAPromise().catch(function (err) {
+  await somethingThatReturnsAPromise()
+  .catch(function (err) {
     console.log(err);
   });
 }
@@ -461,8 +471,7 @@ async function dbFuc(db) {
 上面代码会报错，因为`await`用在普通函数之中了。但是，如果将`forEach`方法的参数改成`async`函数，也有问题。
 
 ```javascript
-function dbFuc(db) {
-  //这里不需要 async
+function dbFuc(db) { //这里不需要 async
   let docs = [{}, {}, {}];
 
   // 可能得到错误结果
@@ -569,34 +578,25 @@ function fn(args) {
 
 ```javascript
 function spawn(genF) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     const gen = genF();
     function step(nextF) {
       let next;
       try {
         next = nextF();
-      } catch (e) {
+      } catch(e) {
         return reject(e);
       }
-      if (next.done) {
+      if(next.done) {
         return resolve(next.value);
       }
-      Promise.resolve(next.value).then(
-        function (v) {
-          step(function () {
-            return gen.next(v);
-          });
-        },
-        function (e) {
-          step(function () {
-            return gen.throw(e);
-          });
-        }
-      );
+      Promise.resolve(next.value).then(function(v) {
+        step(function() { return gen.next(v); });
+      }, function(e) {
+        step(function() { return gen.throw(e); });
+      });
     }
-    step(function () {
-      return gen.next(undefined);
-    });
+    step(function() { return gen.next(undefined); });
   });
 }
 ```
@@ -611,6 +611,7 @@ function spawn(genF) {
 
 ```javascript
 function chainAnimationsPromise(elem, animations) {
+
   // 变量ret用来保存上一个动画的返回值
   let ret = null;
 
@@ -618,21 +619,20 @@ function chainAnimationsPromise(elem, animations) {
   let p = Promise.resolve();
 
   // 使用then方法，添加所有动画
-  for (let anim of animations) {
-    p = p.then(function (val) {
+  for(let anim of animations) {
+    p = p.then(function(val) {
       ret = val;
       return anim(elem);
     });
   }
 
   // 返回一个部署了错误捕捉机制的Promise
-  return p
-    .catch(function (e) {
-      /* 忽略错误，继续执行 */
-    })
-    .then(function () {
-      return ret;
-    });
+  return p.catch(function(e) {
+    /* 忽略错误，继续执行 */
+  }).then(function() {
+    return ret;
+  });
+
 }
 ```
 
@@ -642,17 +642,19 @@ function chainAnimationsPromise(elem, animations) {
 
 ```javascript
 function chainAnimationsGenerator(elem, animations) {
-  return spawn(function* () {
+
+  return spawn(function*() {
     let ret = null;
     try {
-      for (let anim of animations) {
+      for(let anim of animations) {
         ret = yield anim(elem);
       }
-    } catch (e) {
+    } catch(e) {
       /* 忽略错误，继续执行 */
     }
     return ret;
   });
+
 }
 ```
 
@@ -664,10 +666,10 @@ function chainAnimationsGenerator(elem, animations) {
 async function chainAnimationsAsync(elem, animations) {
   let ret = null;
   try {
-    for (let anim of animations) {
+    for(let anim of animations) {
       ret = await anim(elem);
     }
-  } catch (e) {
+  } catch(e) {
     /* 忽略错误，继续执行 */
   }
   return ret;
@@ -685,13 +687,14 @@ Promise 的写法如下。
 ```javascript
 function logInOrder(urls) {
   // 远程读取所有URL
-  const textPromises = urls.map((url) => {
-    return fetch(url).then((response) => response.text());
+  const textPromises = urls.map(url => {
+    return fetch(url).then(response => response.text());
   });
 
   // 按次序输出
   textPromises.reduce((chain, textPromise) => {
-    return chain.then(() => textPromise).then((text) => console.log(text));
+    return chain.then(() => textPromise)
+      .then(text => console.log(text));
   }, Promise.resolve());
 }
 ```
@@ -714,7 +717,7 @@ async function logInOrder(urls) {
 ```javascript
 async function logInOrder(urls) {
   // 并发读取远程URL
-  const textPromises = urls.map(async (url) => {
+  const textPromises = urls.map(async url => {
     const response = await fetch(url);
     return response.text();
   });
@@ -734,7 +737,7 @@ async function logInOrder(urls) {
 
 ```javascript
 // 报错
-const data = await fetch("https://api.example.com");
+const data = await fetch('https://api.example.com');
 ```
 
 上面代码中，`await`命令独立使用，没有放在 async 函数里面，就会报错。
@@ -841,6 +844,8 @@ setTimeout(() => console.log(outputPlusValue(100), 1000);
 
 这时，模块的加载会等待依赖模块（上例是`awaiting.js`）的异步操作完成，才执行后面的代码，有点像暂停在那里。所以，它总是会得到正确的`output`，不会因为加载时机的不同，而得到不一样的值。
 
+注意，顶层`await`只能用在 ES6 模块，不能用在 CommonJS 模块。这是因为 CommonJS 模块的`require()`是同步加载，如果有顶层`await`，就没法处理加载了。
+
 下面是顶层`await`的一些使用场景。
 
 ```javascript
@@ -853,9 +858,9 @@ const connection = await dbConnector();
 // 依赖回滚
 let jQuery;
 try {
-  jQuery = await import("https://cdn-a.com/jQuery");
+  jQuery = await import('https://cdn-a.com/jQuery');
 } catch {
-  jQuery = await import("https://cdn-b.com/jQuery");
+  jQuery = await import('https://cdn-b.com/jQuery');
 }
 ```
 
@@ -864,7 +869,7 @@ try {
 ```javascript
 // x.js
 console.log("X1");
-await new Promise((r) => setTimeout(r, 1000));
+await new Promise(r => setTimeout(r, 1000));
 console.log("X2");
 
 // y.js

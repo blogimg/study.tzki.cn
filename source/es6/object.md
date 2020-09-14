@@ -18,28 +18,28 @@ sidebar: [docs-es6, repos, toc]
 ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁。
 
 ```javascript
-const foo = "bar";
-const baz = { foo };
-baz; // {foo: "bar"}
+const foo = 'bar';
+const baz = {foo};
+baz // {foo: "bar"}
 
 // 等同于
-const baz = { foo: foo };
+const baz = {foo: foo};
 ```
 
 上面代码中，变量`foo`直接写在大括号里面。这时，属性名就是变量名, 属性值就是变量值。下面是另一个例子。
 
 ```javascript
 function f(x, y) {
-  return { x, y };
+  return {x, y};
 }
 
 // 等同于
 
 function f(x, y) {
-  return { x: x, y: y };
+  return {x: x, y: y};
 }
 
-f(1, 2); // Object {x: 1, y: 2}
+f(1, 2) // Object {x: 1, y: 2}
 ```
 
 除了属性简写，方法也可以简写。
@@ -48,33 +48,33 @@ f(1, 2); // Object {x: 1, y: 2}
 const o = {
   method() {
     return "Hello!";
-  },
+  }
 };
 
 // 等同于
 
 const o = {
-  method: function () {
+  method: function() {
     return "Hello!";
-  },
+  }
 };
 ```
 
 下面是一个实际的例子。
 
 ```javascript
-let birth = "2000/01/01";
+let birth = '2000/01/01';
 
 const Person = {
-  name: "张三",
+
+  name: '张三',
 
   //等同于birth: birth
   birth,
 
   // 等同于hello: function ()...
-  hello() {
-    console.log("我的名字是", this.name);
-  },
+  hello() { console.log('我的名字是', this.name); }
+
 };
 ```
 
@@ -84,10 +84,10 @@ const Person = {
 function getPoint() {
   const x = 1;
   const y = 10;
-  return { x, y };
+  return {x, y};
 }
 
-getPoint();
+getPoint()
 // {x:1, y:10}
 ```
 
@@ -96,15 +96,15 @@ CommonJS 模块输出一组变量，就非常合适使用简洁写法。
 ```javascript
 let ms = {};
 
-function getItem(key) {
+function getItem (key) {
   return key in ms ? ms[key] : null;
 }
 
-function setItem(key, value) {
+function setItem (key, value) {
   ms[key] = value;
 }
 
-function clear() {
+function clear () {
   ms = {};
 }
 
@@ -113,7 +113,7 @@ module.exports = { getItem, setItem, clear };
 module.exports = {
   getItem: getItem,
   setItem: setItem,
-  clear: clear,
+  clear: clear
 };
 ```
 
@@ -123,33 +123,33 @@ module.exports = {
 const cart = {
   _wheels: 4,
 
-  get wheels() {
+  get wheels () {
     return this._wheels;
   },
 
-  set wheels(value) {
+  set wheels (value) {
     if (value < this._wheels) {
-      throw new Error("数值太小了！");
+      throw new Error('数值太小了！');
     }
     this._wheels = value;
-  },
-};
+  }
+}
 ```
 
 简洁写法在打印对象时也很有用。
 
 ```javascript
 let user = {
-  name: "test",
+  name: 'test'
 };
 
 let foo = {
-  bar: "baz",
+  bar: 'baz'
 };
 
-console.log(user, foo);
+console.log(user, foo)
 // {name: "test"} {bar: "baz"}
-console.log({ user, foo });
+console.log({user, foo})
 // {user: {name: "test"}, foo: {bar: "baz"}}
 ```
 
@@ -160,11 +160,11 @@ console.log({ user, foo });
 ```javascript
 const obj = {
   f() {
-    this.foo = "bar";
-  },
+    this.foo = 'bar';
+  }
 };
 
-new obj.f(); // 报错
+new obj.f() // 报错
 ```
 
 上面代码中，`f`是一个简写的对象方法，所以`obj.f`不能当作构造函数使用。
@@ -178,7 +178,7 @@ JavaScript 定义对象的属性，有两种方法。
 obj.foo = true;
 
 // 方法二
-obj["a" + "bc"] = 123;
+obj['a' + 'bc'] = 123;
 ```
 
 上面代码的方法一是直接用标识符作为属性名，方法二是用表达式作为属性名，这时要将表达式放在方括号之内。
@@ -188,46 +188,46 @@ obj["a" + "bc"] = 123;
 ```javascript
 var obj = {
   foo: true,
-  abc: 123,
+  abc: 123
 };
 ```
 
 ES6 允许字面量定义对象时，用方法二（表达式）作为对象的属性名，即把表达式放在方括号内。
 
 ```javascript
-let propKey = "foo";
+let propKey = 'foo';
 
 let obj = {
   [propKey]: true,
-  ["a" + "bc"]: 123,
+  ['a' + 'bc']: 123
 };
 ```
 
 下面是另一个例子。
 
 ```javascript
-let lastWord = "last word";
+let lastWord = 'last word';
 
 const a = {
-  "first word": "hello",
-  [lastWord]: "world",
+  'first word': 'hello',
+  [lastWord]: 'world'
 };
 
-a["first word"]; // "hello"
-a[lastWord]; // "world"
-a["last word"]; // "world"
+a['first word'] // "hello"
+a[lastWord] // "world"
+a['last word'] // "world"
 ```
 
 表达式还可以用于定义方法名。
 
 ```javascript
 let obj = {
-  ["h" + "ello"]() {
-    return "hi";
-  },
+  ['h' + 'ello']() {
+    return 'hi';
+  }
 };
 
-obj.hello(); // hi
+obj.hello() // hi
 ```
 
 注意，属性名表达式与简洁表示法，不能同时使用，会报错。
@@ -246,15 +246,15 @@ const baz = { [foo]: 'abc'};
 注意，属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串`[object Object]`，这一点要特别小心。
 
 ```javascript
-const keyA = { a: 1 };
-const keyB = { b: 2 };
+const keyA = {a: 1};
+const keyB = {b: 2};
 
 const myObject = {
-  [keyA]: "valueA",
-  [keyB]: "valueB",
+  [keyA]: 'valueA',
+  [keyB]: 'valueB'
 };
 
-myObject; // Object {[object Object]: "valueB"}
+myObject // Object {[object Object]: "valueB"}
 ```
 
 上面代码中，`[keyA]`和`[keyB]`得到的都是`[object Object]`，所以`[keyB]`会把`[keyA]`覆盖掉，而`myObject`最后只有一个`[object Object]`属性。
@@ -266,11 +266,11 @@ myObject; // Object {[object Object]: "valueB"}
 ```javascript
 const person = {
   sayName() {
-    console.log("hello!");
+    console.log('hello!');
   },
 };
 
-person.sayName.name; // "sayName"
+person.sayName.name   // "sayName"
 ```
 
 上面代码中，方法的`name`属性返回函数名（即方法名）。
@@ -280,40 +280,40 @@ person.sayName.name; // "sayName"
 ```javascript
 const obj = {
   get foo() {},
-  set foo(x) {},
+  set foo(x) {}
 };
 
-obj.foo.name;
+obj.foo.name
 // TypeError: Cannot read property 'name' of undefined
 
-const descriptor = Object.getOwnPropertyDescriptor(obj, "foo");
+const descriptor = Object.getOwnPropertyDescriptor(obj, 'foo');
 
-descriptor.get.name; // "get foo"
-descriptor.set.name; // "set foo"
+descriptor.get.name // "get foo"
+descriptor.set.name // "set foo"
 ```
 
 有两种特殊情况：`bind`方法创造的函数，`name`属性返回`bound`加上原函数的名字；`Function`构造函数创造的函数，`name`属性返回`anonymous`。
 
 ```javascript
-new Function().name; // "anonymous"
+(new Function()).name // "anonymous"
 
-var doSomething = function () {
+var doSomething = function() {
   // ...
 };
-doSomething.bind().name; // "bound doSomething"
+doSomething.bind().name // "bound doSomething"
 ```
 
 如果对象的方法是一个 Symbol 值，那么`name`属性返回的是这个 Symbol 值的描述。
 
 ```javascript
-const key1 = Symbol("description");
+const key1 = Symbol('description');
 const key2 = Symbol();
 let obj = {
   [key1]() {},
   [key2]() {},
 };
-obj[key1].name; // "[description]"
-obj[key2].name; // ""
+obj[key1].name // "[description]"
+obj[key2].name // ""
 ```
 
 上面代码中，`key1`对应的 Symbol 值有描述，`key2`没有。
@@ -326,7 +326,7 @@ obj[key2].name; // ""
 
 ```javascript
 let obj = { foo: 123 };
-Object.getOwnPropertyDescriptor(obj, "foo");
+Object.getOwnPropertyDescriptor(obj, 'foo')
 //  {
 //    value: 123,
 //    writable: true,
@@ -347,10 +347,10 @@ Object.getOwnPropertyDescriptor(obj, "foo");
 这四个操作之中，前三个是 ES5 就有的，最后一个`Object.assign()`是 ES6 新增的。其中，只有`for...in`会返回继承的属性，其他三个方法都会忽略继承的属性，只处理对象自身的属性。实际上，引入“可枚举”（`enumerable`）这个概念的最初目的，就是让某些属性可以规避掉`for...in`操作，不然所有内部属性和方法都会被遍历到。比如，对象原型的`toString`方法，以及数组的`length`属性，就通过“可枚举性”，从而避免被`for...in`遍历到。
 
 ```javascript
-Object.getOwnPropertyDescriptor(Object.prototype, "toString").enumerable;
+Object.getOwnPropertyDescriptor(Object.prototype, 'toString').enumerable
 // false
 
-Object.getOwnPropertyDescriptor([], "length").enumerable;
+Object.getOwnPropertyDescriptor([], 'length').enumerable
 // false
 ```
 
@@ -359,12 +359,7 @@ Object.getOwnPropertyDescriptor([], "length").enumerable;
 另外，ES6 规定，所有 Class 的原型的方法都是不可枚举的。
 
 ```javascript
-Object.getOwnPropertyDescriptor(
-  class {
-    foo() {}
-  }.prototype,
-  "foo"
-).enumerable;
+Object.getOwnPropertyDescriptor(class {foo() {}}.prototype, 'foo').enumerable
 // false
 ```
 
@@ -401,7 +396,7 @@ ES6 一共有 5 种方法可以遍历对象的属性。
 - 最后遍历所有 Symbol 键，按照加入时间升序排列。
 
 ```javascript
-Reflect.ownKeys({ [Symbol()]: 0, b: 0, 10: 0, 2: 0, a: 0 });
+Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
 // ['2', '10', 'b', 'a', Symbol()]
 ```
 
@@ -413,18 +408,18 @@ Reflect.ownKeys({ [Symbol()]: 0, b: 0, 10: 0, 2: 0, a: 0 });
 
 ```javascript
 const proto = {
-  foo: "hello",
+  foo: 'hello'
 };
 
 const obj = {
-  foo: "world",
+  foo: 'world',
   find() {
     return super.foo;
-  },
+  }
 };
 
 Object.setPrototypeOf(obj, proto);
-obj.find(); // "hello"
+obj.find() // "hello"
 ```
 
 上面代码中，对象`obj.find()`方法之中，通过`super.foo`引用了原型对象`proto`的`foo`属性。
@@ -434,20 +429,20 @@ obj.find(); // "hello"
 ```javascript
 // 报错
 const obj = {
-  foo: super.foo,
-};
+  foo: super.foo
+}
 
 // 报错
 const obj = {
-  foo: () => super.foo,
-};
+  foo: () => super.foo
+}
 
 // 报错
 const obj = {
   foo: function () {
-    return super.foo;
-  },
-};
+    return super.foo
+  }
+}
 ```
 
 上面三种`super`的用法都会报错，因为对于 JavaScript 引擎来说，这里的`super`都没有用在对象的方法之中。第一种写法是`super`用在属性里面，第二种和第三种写法是`super`用在一个函数里面，然后赋值给`foo`属性。目前，只有对象方法的简写法可以让 JavaScript 引擎确认，定义的是对象的方法。
@@ -456,22 +451,22 @@ JavaScript 引擎内部，`super.foo`等同于`Object.getPrototypeOf(this).foo`�
 
 ```javascript
 const proto = {
-  x: "hello",
+  x: 'hello',
   foo() {
     console.log(this.x);
   },
 };
 
 const obj = {
-  x: "world",
+  x: 'world',
   foo() {
     super.foo();
-  },
-};
+  }
+}
 
 Object.setPrototypeOf(obj, proto);
 
-obj.foo(); // "world"
+obj.foo() // "world"
 ```
 
 上面代码中，`super.foo`指向原型对象`proto`的`foo`方法，但是绑定的`this`却还是当前对象`obj`，因此输出的就是`world`。
@@ -486,9 +481,9 @@ obj.foo(); // "world"
 
 ```javascript
 let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
-x; // 1
-y; // 2
-z; // { a: 3, b: 4 }
+x // 1
+y // 2
+z // { a: 3, b: 4 }
 ```
 
 上面代码中，变量`z`是解构赋值所在的对象。它获取等号右边的所有尚未读取的键（`a`和`b`），将它们连同值一起拷贝过来。
@@ -515,7 +510,7 @@ let { x, ...y, ...z } = someObject; // 句法错误
 let obj = { a: { b: 1 } };
 let { ...x } = obj;
 obj.a.b = 2;
-x.a.b; // 2
+x.a.b // 2
 ```
 
 上面代码中，`x`是解构赋值所在的对象，拷贝了对象`obj`的`a`属性。`a`属性引用了一个对象，修改这个对象的值，会影响到解构赋值对它的引用。
@@ -527,8 +522,8 @@ let o1 = { a: 1 };
 let o2 = { b: 2 };
 o2.__proto__ = o1;
 let { ...o3 } = o2;
-o3; // { b: 2 }
-o3.a; // undefined
+o3 // { b: 2 }
+o3.a // undefined
 ```
 
 上面代码中，对象`o3`复制了`o2`，但是只复制了`o2`自身的属性，没有复制它的原型对象`o1`的属性。
@@ -541,9 +536,9 @@ o.z = 3;
 
 let { x, ...newObj } = o;
 let { y, z } = newObj;
-x; // 1
-y; // undefined
-z; // 3
+x // 1
+y // undefined
+z // 3
 ```
 
 上面代码中，变量`x`是单纯的解构赋值，所以可以读取对象`o`继承的属性；变量`y`和`z`是扩展运算符的解构赋值，只能读取对象`o`自身的属性，所以变量`z`可以赋值成功，变量`y`取不到值。ES6 规定，变量声明语句之中，如果使用解构赋值，扩展运算符后面必须是一个变量名，而不能是一个解构赋值表达式，所以上面代码引入了中间变量`newObj`，如果写成下面这样会报错。
@@ -575,14 +570,14 @@ function wrapperFunction({ x, y, ...restConfig }) {
 ```javascript
 let z = { a: 3, b: 4 };
 let n = { ...z };
-n; // { a: 3, b: 4 }
+n // { a: 3, b: 4 }
 ```
 
 由于数组是特殊的对象，所以对象的扩展运算符也可以用于数组。
 
 ```javascript
-let foo = { ...["a", "b", "c"] };
-foo;
+let foo = { ...['a', 'b', 'c'] };
+foo
 // {0: "a", 1: "b", 2: "c"}
 ```
 
@@ -636,17 +631,20 @@ let aClone = Object.assign({}, a);
 // 写法一
 const clone1 = {
   __proto__: Object.getPrototypeOf(obj),
-  ...obj,
+  ...obj
 };
 
 // 写法二
-const clone2 = Object.assign(Object.create(Object.getPrototypeOf(obj)), obj);
+const clone2 = Object.assign(
+  Object.create(Object.getPrototypeOf(obj)),
+  obj
+);
 
 // 写法三
 const clone3 = Object.create(
   Object.getPrototypeOf(obj),
   Object.getOwnPropertyDescriptors(obj)
-);
+)
 ```
 
 上面代码中，写法一的`__proto__`属性在非浏览器的环境不一定部署，因此推荐使用写法二和写法三。
@@ -666,9 +664,7 @@ let aWithOverrides = { ...a, x: 1, y: 2 };
 // 等同于
 let aWithOverrides = { ...a, ...{ x: 1, y: 2 } };
 // 等同于
-let x = 1,
-  y = 2,
-  aWithOverrides = { ...a, x, y };
+let x = 1, y = 2, aWithOverrides = { ...a, x, y };
 // 等同于
 let aWithOverrides = Object.assign({}, a, { x: 1, y: 2 });
 ```
@@ -680,7 +676,7 @@ let aWithOverrides = Object.assign({}, a, { x: 1, y: 2 });
 ```javascript
 let newVersion = {
   ...previousVersion,
-  name: "New Name", // Override the name property
+  name: 'New Name' // Override the name property
 };
 ```
 
@@ -700,7 +696,7 @@ let aWithDefaults = Object.assign({ x: 1, y: 2 }, a);
 
 ```javascript
 const obj = {
-  ...(x > 1 ? { a: 1 } : {}),
+  ...(x > 1 ? {a: 1} : {}),
   b: 2,
 };
 ```
@@ -710,9 +706,9 @@ const obj = {
 ```javascript
 let a = {
   get x() {
-    throw new Error("not throw yet");
-  },
-};
+    throw new Error('not throw yet');
+  }
+}
 
 let aWithXGetter = { ...a }; // 报错
 ```
@@ -725,15 +721,13 @@ let aWithXGetter = { ...a }; // 报错
 
 ```javascript
 // 错误的写法
-const firstName = message.body.user.firstName;
+const  firstName = message.body.user.firstName;
 
 // 正确的写法
-const firstName =
-  (message &&
-    message.body &&
-    message.body.user &&
-    message.body.user.firstName) ||
-  "default";
+const firstName = (message
+  && message.body
+  && message.body.user
+  && message.body.user.firstName) || 'default';
 ```
 
 上面例子中，`firstName`属性在对象的第四层，所以需要判断四次，每一层是否有值。
@@ -741,8 +735,8 @@ const firstName =
 三元运算符`?:`也常用于判断对象是否存在。
 
 ```javascript
-const fooInput = myForm.querySelector("input[name=foo]");
-const fooValue = fooInput ? fooInput.value : undefined;
+const fooInput = myForm.querySelector('input[name=foo]')
+const fooValue = fooInput ? fooInput.value : undefined
 ```
 
 上面例子中，必须先判断`fooInput`是否存在，才能读取`fooInput.value`。
@@ -750,8 +744,8 @@ const fooValue = fooInput ? fooInput.value : undefined;
 这样的层层判断非常麻烦，因此 [ES2020](https://github.com/tc39/proposal-optional-chaining) 引入了“链判断运算符”（optional chaining operator）`?.`，简化上面的写法。
 
 ```javascript
-const firstName = message?.body?.user?.firstName || "default";
-const fooValue = myForm.querySelector("input[name=foo]")?.value;
+const firstName = message?.body?.user?.firstName || 'default';
+const fooValue = myForm.querySelector('input[name=foo]')?.value
 ```
 
 上面代码使用了`?.`运算符，直接在链式调用的时候判断，左侧的对象是否为`null`或`undefined`。如果是的，就不再往下运算，而是返回`undefined`。
@@ -759,7 +753,7 @@ const fooValue = myForm.querySelector("input[name=foo]")?.value;
 下面是判断对象方法是否存在，如果存在就立即执行的例子。
 
 ```javascript
-iterator.return?.();
+iterator.return?.()
 ```
 
 上面代码中，`iterator.return`如果有定义，就会调用该方法，否则`iterator.return`直接返回`undefined`，不再执行`?.`后面的部分。
@@ -792,21 +786,21 @@ let hex = "#C0FFEE".match(/#([A-Z]+)/i)?.[1];
 下面是`?.`运算符常见形式，以及不使用该运算符时的等价形式。
 
 ```javascript
-a?.b;
+a?.b
 // 等同于
-a == null ? undefined : a.b;
+a == null ? undefined : a.b
 
-a?.[x];
+a?.[x]
 // 等同于
-a == null ? undefined : a[x];
+a == null ? undefined : a[x]
 
-a?.b();
+a?.b()
 // 等同于
-a == null ? undefined : a.b();
+a == null ? undefined : a.b()
 
-a?.();
+a?.()
 // 等同于
-a == null ? undefined : a();
+a == null ? undefined : a()
 ```
 
 上面代码中，特别注意后两种形式，如果`a?.b()`里面的`a.b`不是函数，不可调用，那么`a?.b()`是会报错的。`a?.()`也是如此，如果`a`不是`null`或`undefined`，但也不是函数，那么`a?.()`会报错。
@@ -818,9 +812,9 @@ a == null ? undefined : a();
 `?.`运算符相当于一种短路机制，只要不满足条件，就不再往下执行。
 
 ```javascript
-a?.[++x];
+a?.[++x]
 // 等同于
-a == null ? undefined : a[++x];
+a == null ? undefined : a[++x]
 ```
 
 上面代码中，如果`a`是`undefined`或`null`，那么`x`不会进行递增运算。也就是说，链判断运算符一旦为真，右侧的表达式就不再求值。
@@ -828,9 +822,9 @@ a == null ? undefined : a[++x];
 （2）delete 运算符
 
 ```javascript
-delete a?.b;
+delete a?.b
 // 等同于
-a == null ? undefined : delete a.b;
+a == null ? undefined : delete a.b
 ```
 
 上面代码中，如果`a`是`undefined`或`null`，会直接返回`undefined`，而不会进行`delete`运算。
@@ -840,10 +834,9 @@ a == null ? undefined : delete a.b;
 如果属性链有圆括号，链判断运算符对圆括号外部没有影响，只对圆括号内部有影响。
 
 ```javascript
-(a?.b).c(
-  // 等价于
-  a == null ? undefined : a.b
-).c;
+(a?.b).c
+// 等价于
+(a == null ? undefined : a.b).c
 ```
 
 上面代码中，`?.`对圆括号外部没有影响，不管`a`对象是否存在，圆括号后面的`.c`总是会执行。
@@ -856,19 +849,19 @@ a == null ? undefined : delete a.b;
 
 ```javascript
 // 构造函数
-new a();
-new (a?.b)();
+new a?.()
+new a?.b()
 
 // 链判断运算符的右侧有模板字符串
-a`{b}`;
-a?.b`{c}`;
+a?.`{b}`
+a?.b`{c}`
 
 // 链判断运算符的左侧是 super
-super?.();
-super?.foo;
+super?.()
+super?.foo
 
 // 链运算符用于赋值运算符左侧
-a?.b = c;
+a?.b = c
 ```
 
 （5）右侧不得为十进制数值
@@ -880,7 +873,7 @@ a?.b = c;
 读取对象属性的时候，如果某个属性的值是`null`或`undefined`，有时候需要为它们指定默认值。常见做法是通过`||`运算符指定默认值。
 
 ```javascript
-const headerText = response.settings.headerText || "Hello, world!";
+const headerText = response.settings.headerText || 'Hello, world!';
 const animationDuration = response.settings.animationDuration || 300;
 const showSplashScreen = response.settings.showSplashScreen || true;
 ```
@@ -890,7 +883,7 @@ const showSplashScreen = response.settings.showSplashScreen || true;
 为了避免这种情况，[ES2020](https://github.com/tc39/proposal-nullish-coalescing) 引入了一个新的 Null 判断运算符`??`。它的行为类似`||`，但是只有运算符左侧的值为`null`或`undefined`时，才会返回右侧的值。
 
 ```javascript
-const headerText = response.settings.headerText ?? "Hello, world!";
+const headerText = response.settings.headerText ?? 'Hello, world!';
 const animationDuration = response.settings.animationDuration ?? 300;
 const showSplashScreen = response.settings.showSplashScreen ?? true;
 ```
@@ -903,7 +896,7 @@ const showSplashScreen = response.settings.showSplashScreen ?? true;
 const animationDuration = response.settings?.animationDuration ?? 300;
 ```
 
-上面代码中，`response.settings`如果是`null`或`undefined`，就会返回默认值 300。
+上面代码中，如果`response.settings`是`null`或`undefined`，或者`response.settings.animationDuration`是`null`或`undefined`，就会返回默认值300。也就是说，这一行代码包括了两级属性的判断。
 
 这个运算符很适合判断函数参数是否赋值。
 
@@ -914,11 +907,13 @@ function Component(props) {
 }
 ```
 
-上面代码判断`props`参数的`enabled`属性是否赋值，等同于下面的写法。
+上面代码判断`props`参数的`enabled`属性是否赋值，基本等同于下面的写法。
 
 ```javascript
 function Component(props) {
-  const { enabled: enable = true } = props;
+  const {
+    enabled: enable = true,
+  } = props;
   // …
 }
 ```

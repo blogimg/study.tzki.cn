@@ -26,7 +26,8 @@ HTML 网页中，浏览器通过`<script>`标签加载 JavaScript 脚本。
 </script>
 
 <!-- 外部脚本 -->
-<script type="application/javascript" src="path/to/myModule.js"></script>
+<script type="application/javascript" src="path/to/myModule.js">
+</script>
 ```
 
 上面代码中，由于浏览器脚本的默认语言是 JavaScript，因此`type="application/javascript"`可以省略。
@@ -87,7 +88,7 @@ ES6 模块也允许内嵌在网页中，语法行为与加载外部脚本完全�
 ```html
 <script type="module">
   import $ from "./jquery/src/jquery.js";
-  $("#message").text("Hi from jQuery!");
+  $('#message').text('Hi from jQuery!');
 </script>
 ```
 
@@ -102,7 +103,7 @@ ES6 模块也允许内嵌在网页中，语法行为与加载外部脚本完全�
 下面是一个示例模块。
 
 ```javascript
-import utils from "https://example.com/js/utils.js";
+import utils from 'https://example.com/js/utils.js';
 
 const x = 1;
 
@@ -120,10 +121,11 @@ const isNotModuleScript = this !== undefined;
 
 讨论 Node.js 加载 ES6 模块之前，必须了解 ES6 模块与 CommonJS 模块完全不同。
 
-它们有两个重大差异。
+它们有三个重大差异。
 
 - CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
 - CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+- CommonJS 模块的`require()`是同步加载模块，ES6 模块的`import`命令是异步加载，有一个独立的模块依赖的解析阶段。
 
 第二个差异是因为 CommonJS 加载的是一个对象（即`module.exports`属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
 
@@ -147,9 +149,9 @@ module.exports = {
 
 ```javascript
 // main.js
-var mod = require("./lib");
+var mod = require('./lib');
 
-console.log(mod.counter); // 3
+console.log(mod.counter);  // 3
 mod.incCounter();
 console.log(mod.counter); // 3
 ```
@@ -164,7 +166,7 @@ function incCounter() {
 }
 module.exports = {
   get counter() {
-    return counter;
+    return counter
   },
   incCounter: incCounter,
 };
@@ -190,7 +192,7 @@ export function incCounter() {
 }
 
 // main.js
-import { counter, incCounter } from "./lib";
+import { counter, incCounter } from './lib';
 console.log(counter); // 3
 incCounter();
 console.log(counter); // 4
@@ -202,11 +204,11 @@ console.log(counter); // 4
 
 ```javascript
 // m1.js
-export var foo = "bar";
-setTimeout(() => (foo = "baz"), 500);
+export var foo = 'bar';
+setTimeout(() => foo = 'baz', 500);
 
 // m2.js
-import { foo } from "./m1.js";
+import {foo} from './m1.js';
 console.log(foo);
 setTimeout(() => console.log(foo), 500);
 ```
@@ -231,7 +233,7 @@ baz
 export let obj = {};
 
 // main.js
-import { obj } from "./lib";
+import { obj } from './lib';
 
 obj.prop = 123; // OK
 obj = {}; // TypeError
@@ -260,16 +262,16 @@ export let c = new C();
 
 ```javascript
 // x.js
-import { c } from "./mod";
+import {c} from './mod';
 c.add();
 
 // y.js
-import { c } from "./mod";
+import {c} from './mod';
 c.show();
 
 // main.js
-import "./x";
-import "./y";
+import './x';
+import './y';
 ```
 
 现在执行`main.js`，输出的是`1`。
@@ -281,11 +283,15 @@ $ babel-node main.js
 
 这就证明了`x.js`和`y.js`加载的都是`C`的同一个实例。
 
-## Node.js 加载
+## Node.js 的模块加载方法
 
 ### 概述
 
-Node.js 对 ES6 模块的处理比较麻烦，因为它有自己的 CommonJS 模块格式，与 ES6 模块格式是不兼容的。目前的解决方案是，将两者分开，ES6 模块和 CommonJS 采用各自的加载方案。从 v13.2 版本开始，Node.js 已经默认打开了 ES6 模块支持。
+JavaScript 现在有两种模块。一种是 ES6 模块，简称 ESM；另一种是 CommonJS 模块，简称 CJS。
+
+CommonJS 模块是 Node.js 专用的，与 ES6 模块不兼容。语法上面，两者最明显的差异是，CommonJS 模块使用`require()`和`module.exports`，ES6 模块使用`import`和`export`。
+
+它们采用不同的加载方案。从 Node.js v13.2 版本开始，Node.js 已经默认打开了 ES6 模块支持。
 
 Node.js 要求 ES6 模块采用`.mjs`后缀文件名。也就是说，只要脚本文件里面使用`import`或者`export`命令，那么就必须采用`.mjs`后缀名。Node.js 遇到`.mjs`文件，就认为它是 ES6 模块，默认启用严格模式，不必在每个模块文件顶部指定`"use strict"`。
 
@@ -310,7 +316,7 @@ $ node my-app.js
 
 注意，ES6 模块与 CommonJS 模块尽量不要混用。`require`命令不能加载`.mjs`文件，会报错，只有`import`命令才可以加载`.mjs`文件。反过来，`.mjs`文件里面也不能使用`require`命令，必须使用`import`。
 
-### main 字段
+### package.json 的 main 字段
 
 `package.json`文件有两个字段可以指定模块的入口文件：`main`和`exports`。比较简单的模块，可以只使用`main`字段，指定模块加载的入口文件。
 
@@ -329,7 +335,7 @@ $ node my-app.js
 ```javascript
 // ./my-app.mjs
 
-import { something } from "es-module-package";
+import { something } from 'es-module-package';
 // 实际加载的是 ./node_modules/es-module-package/src/index.js
 ```
 
@@ -337,7 +343,7 @@ import { something } from "es-module-package";
 
 这时，如果用 CommonJS 模块的`require()`命令去加载`es-module-package`模块会报错，因为 CommonJS 模块不能处理`export`命令。
 
-### exports 字段
+### package.json 的 exports 字段
 
 `exports`字段的优先级高于`main`字段。它有多种用法。
 
@@ -357,7 +363,7 @@ import { something } from "es-module-package";
 上面的代码指定`src/submodule.js`别名为`submodule`，然后就可以从别名加载这个文件。
 
 ```javascript
-import submodule from "es-module-package/submodule";
+import submodule from 'es-module-package/submodule';
 // 加载 ./node_modules/es-module-package/src/submodule.js
 ```
 
@@ -379,10 +385,10 @@ import feature from 'es-module-package/features/x.js';
 
 ```javascript
 // 报错
-import submodule from "es-module-package/private-module.js";
+import submodule from 'es-module-package/private-module.js';
 
 // 不报错
-import submodule from "./node_modules/es-module-package/private-module.js";
+import submodule from './node_modules/es-module-package/private-module.js';
 ```
 
 （2）main 的别名
@@ -457,77 +463,85 @@ import submodule from "./node_modules/es-module-package/private-module.js";
 }
 ```
 
+### CommonJS 模块加载 ES6 模块
+
+CommonJS 的`require()`命令不能加载 ES6 模块，会报错，只能使用`import()`这个方法加载。
+
+```javascript
+(async () => {
+  await import('./my-app.mjs');
+})();
+```
+
+上面代码可以在 CommonJS 模块中运行。
+
+`require()`不支持 ES6 模块的一个原因是，它是同步加载，而 ES6 模块内部可以使用顶层`await`命令，导致无法被同步加载。
+
 ### ES6 模块加载 CommonJS 模块
 
-目前，一个模块同时支持 ES6 和 CommonJS 两种格式的常见方法是，`package.json`文件的`main`字段指定 CommonJS 入口，给 Node.js 使用；`module`字段指定 ES6 模块入口，给打包工具使用，因为 Node.js 不认识`module`字段。
-
-有了上一节的条件加载以后，Node.js 本身就可以同时处理两种模块。
-
-```javascript
-// ./node_modules/pkg/package.json
-{
-  "type": "module",
-  "main": "./index.cjs",
-  "exports": {
-    "require": "./index.cjs",
-    "default": "./wrapper.mjs"
-  }
-}
-```
-
-上面代码指定了 CommonJS 入口文件`index.cjs`，下面是这个文件的代码。
-
-```javascript
-// ./node_modules/pkg/index.cjs
-exports.name = "value";
-```
-
-然后，ES6 模块可以加载这个文件。
-
-```javascript
-// ./node_modules/pkg/wrapper.mjs
-import cjsModule from "./index.cjs";
-export const name = cjsModule.name;
-```
-
-注意，`import`命令加载 CommonJS 模块，只能整体加载，不能只加载单一的输出项。
+ES6 模块的`import`命令可以加载 CommonJS 模块，但是只能整体加载，不能只加载单一的输出项。
 
 ```javascript
 // 正确
-import packageMain from "commonjs-package";
+import packageMain from 'commonjs-package';
 
 // 报错
-import { method } from "commonjs-package";
+import { method } from 'commonjs-package';
+```
+
+这是因为 ES6 模块需要支持静态代码分析，而 CommonJS 模块的输出接口是`module.exports`，是一个对象，无法被静态分析，所以只能整体加载。
+
+加载单一的输出项，可以写成下面这样。
+
+```javascript
+import packageMain from 'commonjs-package';
+const { method } = packageMain;
 ```
 
 还有一种变通的加载方法，就是使用 Node.js 内置的`module.createRequire()`方法。
 
 ```javascript
 // cjs.cjs
-module.exports = "cjs";
+module.exports = 'cjs';
 
 // esm.mjs
-import { createRequire } from "module";
+import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
-const cjs = require("./cjs.cjs");
-cjs === "cjs"; // true
+const cjs = require('./cjs.cjs');
+cjs === 'cjs'; // true
 ```
 
-上面代码中，ES6 模块通过`module.createRequire()`方法可以加载 CommonJS 模块
+上面代码中，ES6 模块通过`module.createRequire()`方法可以加载 CommonJS 模块。但是，这种写法等于将 ES6 和 CommonJS 混在一起了，所以不建议使用。
 
-### CommonJS 模块加载 ES6 模块
+### 同时支持两种格式的模块
 
-CommonJS 的`require`命令不能加载 ES6 模块，会报错，只能使用`import()`这个方法加载。
+一个模块同时要支持 CommonJS 和 ES6 两种格式，也很容易。
+
+如果原始模块是 ES6 格式，那么需要给出一个整体输出接口，比如`export default obj`，使得 CommonJS 可以用`import()`进行加载。
+
+如果原始模块是 CommonJS 格式，那么可以加一个包装层。
 
 ```javascript
-(async () => {
-  await import("./my-app.mjs");
-})();
+import cjsModule from '../index.js';
+export const foo = cjsModule.foo;
 ```
 
-上面代码可以在 CommonJS 模块中运行。
+上面代码先整体输入 CommonJS 模块，然后再根据需要输出具名接口。
+
+你可以把这个文件的后缀名改为`.mjs`，或者将它放在一个子目录，再在这个子目录里面放一个单独的`package.json`文件，指明`{ type: "module" }`。
+
+另一种做法是在`package.json`文件的`exports`字段，指明两种格式模块各自的加载入口。
+
+```javascript
+"exports"：{
+  "require": "./index.js"，
+  "import": "./esm/wrapper.js"
+}
+```
+
+上面代码指定`require()`和`import`，加载该模块会自动切换到不一样的入口文件。
 
 ### Node.js 的内置模块
 
@@ -535,12 +549,12 @@ Node.js 的内置模块可以整体加载，也可以加载指定的输出项。
 
 ```javascript
 // 整体加载
-import EventEmitter from "events";
+import EventEmitter from 'events';
 const e = new EventEmitter();
 
 // 加载指定的输出项
-import { readFile } from "fs";
-readFile("./foo.txt", (err, source) => {
+import { readFile } from 'fs';
+readFile('./foo.txt', (err, source) => {
   if (err) {
     console.error(err);
   } else {
@@ -555,24 +569,22 @@ ES6 模块的加载路径必须给出脚本的完整路径，不能省略脚本�
 
 ```javascript
 // ES6 模块中将报错
-import { something } from "./index";
+import { something } from './index';
 ```
 
 为了与浏览器的`import`加载规则相同，Node.js 的`.mjs`文件支持 URL 路径。
 
 ```javascript
-import "./foo.mjs?query=1"; // 加载 ./foo 传入参数 ?query=1
+import './foo.mjs?query=1'; // 加载 ./foo 传入参数 ?query=1
 ```
 
 上面代码中，脚本路径带有参数`?query=1`，Node 会按 URL 规则解读。同一个脚本只要参数不同，就会被加载多次，并且保存成不同的缓存。由于这个原因，只要文件名中含有`:`、`%`、`#`、`?`等特殊字符，最好对这些字符进行转义。
 
 目前，Node.js 的`import`命令只支持加载本地模块（`file:`协议）和`data:`协议，不支持加载远程模块。另外，脚本路径只支持相对路径，不支持绝对路径（即以`/`或`//`开头的路径）。
 
-最后，Node 的`import`命令是异步加载，这一点与浏览器的处理方法相同。
-
 ### 内部变量
 
-ES6 模块应该是通用的，同一个模块不用修改，就可以用在浏览器环境和服务器环境。为了达到这个目标，Node 规定 ES6 模块之中不能使用 CommonJS 模块的特有的一些内部变量。
+ES6 模块应该是通用的，同一个模块不用修改，就可以用在浏览器环境和服务器环境。为了达到这个目标，Node.js 规定 ES6 模块之中不能使用 CommonJS 模块的特有的一些内部变量。
 
 首先，就是`this`关键字。ES6 模块之中，顶层的`this`指向`undefined`；CommonJS 模块的顶层`this`指向当前模块，这是两者的一个重大差异。
 
@@ -591,10 +603,10 @@ ES6 模块应该是通用的，同一个模块不用修改，就可以用在浏�
 
 ```javascript
 // a.js
-var b = require("b");
+var b = require('b');
 
 // b.js
-var a = require("a");
+var a = require('a');
 ```
 
 通常，“循环加载”表示存在强耦合，如果处理不好，还可能导致递归加载，使得程序无法执行，因此应该避免出现。
@@ -630,10 +642,10 @@ CommonJS 模块的重要特性是加载时执行，即脚本代码在`require`�
 
 ```javascript
 exports.done = false;
-var b = require("./b.js");
-console.log("在 a.js 之中，b.done = %j", b.done);
+var b = require('./b.js');
+console.log('在 a.js 之中，b.done = %j', b.done);
 exports.done = true;
-console.log("a.js 执行完毕");
+console.log('a.js 执行完毕');
 ```
 
 上面代码之中，`a.js`脚本先输出一个`done`变量，然后加载另一个脚本文件`b.js`。注意，此时`a.js`代码就停在这里，等待`b.js`执行完毕，再往下执行。
@@ -642,10 +654,10 @@ console.log("a.js 执行完毕");
 
 ```javascript
 exports.done = false;
-var a = require("./a.js");
-console.log("在 b.js 之中，a.done = %j", a.done);
+var a = require('./a.js');
+console.log('在 b.js 之中，a.done = %j', a.done);
 exports.done = true;
-console.log("b.js 执行完毕");
+console.log('b.js 执行完毕');
 ```
 
 上面代码之中，`b.js`执行到第二行，就会去加载`a.js`，这时，就发生了“循环加载”。系统会去`a.js`模块对应对象的`exports`属性取值，可是因为`a.js`还没有执行完，从`exports`属性只能取回已经执行的部分，而不是最后的值。
@@ -661,9 +673,9 @@ exports.done = false;
 然后，`b.js`接着往下执行，等到全部执行完毕，再把执行权交还给`a.js`。于是，`a.js`接着往下执行，直到执行完毕。我们写一个脚本`main.js`，验证这个过程。
 
 ```javascript
-var a = require("./a.js");
-var b = require("./b.js");
-console.log("在 main.js 之中, a.done=%j, b.done=%j", a.done, b.done);
+var a = require('./a.js');
+var b = require('./b.js');
+console.log('在 main.js 之中, a.done=%j, b.done=%j', a.done, b.done);
 ```
 
 执行`main.js`，运行结果如下。
@@ -689,15 +701,15 @@ exports.done = true;
 另外，由于 CommonJS 模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。
 
 ```javascript
-var a = require("a"); // 安全的写法
-var foo = require("a").foo; // 危险的写法
+var a = require('a'); // 安全的写法
+var foo = require('a').foo; // 危险的写法
 
 exports.good = function (arg) {
-  return a.foo("good", arg); // 使用的是 a.foo 的最新值
+  return a.foo('good', arg); // 使用的是 a.foo 的最新值
 };
 
 exports.bad = function (arg) {
-  return foo("bad", arg); // 使用的是一个部分加载时的值
+  return foo('bad', arg); // 使用的是一个部分加载时的值
 };
 ```
 
@@ -711,16 +723,16 @@ ES6 处理“循环加载”与 CommonJS 有本质的不同。ES6 模块是动�
 
 ```javascript
 // a.mjs
-import { bar } from "./b";
-console.log("a.mjs");
+import {bar} from './b';
+console.log('a.mjs');
 console.log(bar);
-export let foo = "foo";
+export let foo = 'foo';
 
 // b.mjs
-import { foo } from "./a";
-console.log("b.mjs");
+import {foo} from './a';
+console.log('b.mjs');
 console.log(foo);
-export let bar = "bar";
+export let bar = 'bar';
 ```
 
 上面代码中，`a.mjs`加载`b.mjs`，`b.mjs`又加载`a.mjs`，构成循环加载。执行`a.mjs`，结果如下。
@@ -739,22 +751,18 @@ ReferenceError: foo is not defined
 
 ```javascript
 // a.mjs
-import { bar } from "./b";
-console.log("a.mjs");
+import {bar} from './b';
+console.log('a.mjs');
 console.log(bar());
-function foo() {
-  return "foo";
-}
-export { foo };
+function foo() { return 'foo' }
+export {foo};
 
 // b.mjs
-import { foo } from "./a";
-console.log("b.mjs");
+import {foo} from './a';
+console.log('b.mjs');
 console.log(foo());
-function bar() {
-  return "bar";
-}
-export { bar };
+function bar() { return 'bar' }
+export {bar};
 ```
 
 这时再执行`a.mjs`就可以得到预期结果。
@@ -771,11 +779,11 @@ bar
 
 ```javascript
 // a.mjs
-import { bar } from "./b";
-console.log("a.mjs");
+import {bar} from './b';
+console.log('a.mjs');
 console.log(bar());
-const foo = () => "foo";
-export { foo };
+const foo = () => 'foo';
+export {foo};
 ```
 
 上面代码的第四行，改成了函数表达式，就不具有提升作用，执行就会报错。
@@ -784,7 +792,7 @@ export { foo };
 
 ```javascript
 // even.js
-import { odd } from "./odd";
+import { odd } from './odd'
 export var counter = 0;
 export function even(n) {
   counter++;
@@ -792,7 +800,7 @@ export function even(n) {
 }
 
 // odd.js
-import { even } from "./even";
+import { even } from './even';
 export function odd(n) {
   return n !== 0 && even(n - 1);
 }
@@ -821,19 +829,19 @@ true
 
 ```javascript
 // even.js
-var odd = require("./odd");
+var odd = require('./odd');
 var counter = 0;
 exports.counter = counter;
 exports.even = function (n) {
   counter++;
   return n == 0 || odd(n - 1);
-};
+}
 
 // odd.js
-var even = require("./even").even;
+var even = require('./even').even;
 module.exports = function (n) {
   return n != 0 && even(n - 1);
-};
+}
 ```
 
 上面代码中，`even.js`加载`odd.js`，而`odd.js`又去加载`even.js`，形成“循环加载”。这时，执行引擎就会输出`even.js`已经执行的部分（不存在任何结果），所以在`odd.js`之中，变量`even`等于`undefined`，等到后面调用`even(n - 1)`就会报错。
@@ -844,3 +852,4 @@ $ node
 > m.even(10)
 TypeError: even is not a function
 ```
+
