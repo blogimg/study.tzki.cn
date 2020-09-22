@@ -54,7 +54,7 @@ short_title: 小康的Speak使用
 
 ```html
 <div class="is-container"></div>
-<script src="main.js"></script>
+<script src="https://unpkg.com/ispeak/index.js"></script>
 <script>
     new Speak(
         {
