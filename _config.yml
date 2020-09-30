@@ -74,7 +74,8 @@ meta_generator: true
 abbrlink:
   alg: crc32 #算法 crc16(default) and crc32
   rep: hex #进制 dec(default) and hex 十进制和十六进制，默认为10进制。
-
+# 百度提交
+commit_cron: "0 0,10 * * *"
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
